@@ -1,4 +1,7 @@
 #include "test.hh"
+#include "shapes.hh"
+
+#include <vector>
 
 void test1()
 {
