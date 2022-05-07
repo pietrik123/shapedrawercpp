@@ -4,9 +4,9 @@
 
 void drawRectangle(const Rectangle* rect)
 {
-    for (auto i = 0; i < rect->a; i++)
+    for (auto i = 0; i < rect->get_a(); i++)
     {
-        for (auto j = 0; j < rect->b; j++)
+        for (auto j = 0; j < rect->get_b(); j++)
         {
             std::cout << "#";
         }
@@ -17,11 +17,11 @@ void drawRectangle(const Rectangle* rect)
 
 void drawTriangle(const Triangle* tr)
 {
-    for (auto i =0; i < tr->a; i++)
+    for (auto i =0; i < tr->get_a(); i++)
     {
-        int n = tr->h * i / tr->a + 1;
+        int n = tr->get_h() * i / tr->get_a() + 1;
         if (i == 0) n = 1;
-        if (i == tr->a-1) n = tr->h;
+        if (i == tr->get_a()-1) n = tr->get_h();
         for (auto j = 0; j < n; j++)
         {
             std::cout << "#";
@@ -29,4 +29,14 @@ void drawTriangle(const Triangle* tr)
         std::cout << "\n";
     }
     std::cout << "\n\n";
+}
+
+void Rectangle::draw() 
+{
+    drawRectangle(this);
+}
+
+void Triangle::draw() 
+{
+    drawTriangle(this);
 }
