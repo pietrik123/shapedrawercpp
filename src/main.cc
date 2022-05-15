@@ -1,5 +1,4 @@
 #include "shapes.hh"
-#include "test.hh"
 #include "command.hh"
 
 #include <iostream>

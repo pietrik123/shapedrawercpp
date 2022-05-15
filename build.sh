@@ -1,9 +1,24 @@
+
+
+
+BUILDDIR=build
+SRCDIR=src
+MAINEXEC=shapedrawer
+
+mkdir $BUILDDIR
+
+rm $BUILDDIR/*
+rm $BUILDDIR/examples/*
 rm *.o
-rm shapedrawer examples
-g++ -c -o test.o test.cc
-g++ -c -o command.o command.cc
-g++ -c -o shapes.o shapes.cc
-g++ -c -o main.o main.cc
-g++ -c -o examples.o examples.cc
-g++ -o shapedrawer shapes.o command.o main.o
-g++ -o examples shapes.o test.o examples.o
+
+echo 'Compiling main sources'
+g++ -c $SRCDIR/*.cc -I$SRCDIR
+mv *.o $BUILDDIR/
+g++ -o $BUILDDIR/$MAINEXEC $BUILDDIR/*.o
+
+echo 'Compiling examples...'
+g++ -c $SRCDIR/examples/*.cc -I$SRCDIR
+mv *.o $BUILDDIR/examples/ 
+g++ -o $BUILDDIR/examples/test $(find $BUILDDIR -maxdepth 1 -iname "*.o" ! -iname "main*") $BUILDDIR/examples/test.o $BUILDDIR/examples/main.o
+
+
