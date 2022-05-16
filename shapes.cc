@@ -2,11 +2,30 @@
 
 #include <iostream>
 
-void drawRectangle(const Rectangle* rect)
+Rectangle::Rectangle(int sideA, int sideB)
 {
-    for (auto i = 0; i < rect->a; i++)
+    m_a = sideA;
+    m_b = sideB;
+}
+void Rectangle::setDimensions(int sideA, int sideB)
+{
+    m_a = sideA;
+    m_b = sideB;
+}
+int Rectangle::getSideA()
+{
+    return m_a;
+}
+int Rectangle::getSideB()
+{
+    return m_b;
+}
+
+void Rectangle::draw() const
+{
+    for (auto i = 0; i < m_a; i++)
     {
-        for (auto j = 0; j < rect->b; j++)
+        for (auto j = 0; j < m_b; j++)
         {
             std::cout << "#";
         }
@@ -15,13 +34,35 @@ void drawRectangle(const Rectangle* rect)
     std::cout << "\n\n";
 }
 
-void drawTriangle(const Triangle* tr)
+Triangle::Triangle(int base, int height)
 {
-    for (auto i =0; i < tr->a; i++)
+    m_a = base;
+    m_h = height;
+}
+
+void Triangle::setDimensions(int base, int height)
+{
+    m_a = base;
+    m_h = height;
+}
+
+int Triangle::getBase()
+{
+    return m_a;
+}
+
+int Triangle::getHeight()
+{
+    return m_h;
+}
+
+void Triangle::draw() const
+{
+    for (auto i =0; i < m_a; i++)
     {
-        int n = tr->h * i / tr->a + 1;
+        int n = m_h * i / m_a + 1;
         if (i == 0) n = 1;
-        if (i == tr->a-1) n = tr->h;
+        if (i == m_a-1) n = m_h;
         for (auto j = 0; j < n; j++)
         {
             std::cout << "#";

@@ -1,18 +1,37 @@
 #ifndef SHAPES_HH
 #define SHAPES_HH
 
-struct Rectangle
+class Shape
 {
-    int a, b;
+    public:
+    virtual void draw() const = 0;
 };
 
-struct Triangle
+class Rectangle : public Shape
 {
-    int a, h;
+    public:
+    Rectangle(int sideA, int sideB);
+    ~Rectangle() {}
+    void setDimensions(int sideA, int sideB);
+    int getSideA();
+    int getSideB();
+    void draw() const override;
+    private:
+    int m_a, m_b;
 };
 
-void drawRectangle(const Rectangle* rect);
-void drawTriangle(const Triangle* tr);
+class Triangle : public Shape
+{
+    public:
+    Triangle(int base, int height);
+    ~Triangle() {}
+    void setDimensions(int base, int height);
+    int getBase();
+    int getHeight();
+    void draw() const override;
+    private:
+    int m_a, m_h;
+};
 
 #endif
 
