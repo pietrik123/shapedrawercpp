@@ -17,7 +17,7 @@ void test1()
 
     for (auto& t : triangles)
     {
-       t.draw();
+        t.draw();
     }
 
     for (auto& r : rectangles)
@@ -40,16 +40,14 @@ void test2()
         {5,5}, {2,5}, {5,2}
     };
 
-
-
     for (int i = 0; i < triangles.size(); i++)
     {
-    shapes.push_back(&triangles[i]);
+        shapes.push_back(&triangles[i]);
     }
 
     for (int i = 0; i < rectangles.size(); i++)
     {
-    shapes.push_back(&rectangles[i]);
+        shapes.push_back(&rectangles[i]);
     }
 
     for (auto& s : shapes)

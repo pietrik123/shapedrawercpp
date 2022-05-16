@@ -7,7 +7,7 @@ Rectangle::Rectangle(int sideA, int sideB)
     m_a = sideA;
     m_b = sideB;
 }
-void Rectangle::setDimension(int sideA, int sideB)
+void Rectangle::setDimensions(int sideA, int sideB)
 {
     m_a = sideA;
     m_b = sideB;
@@ -40,7 +40,7 @@ Triangle::Triangle(int base, int height)
     m_h = height;
 }
 
-void Triangle::setDimension(int base, int height)
+void Triangle::setDimensions(int base, int height)
 {
     m_a = base;
     m_h = height;

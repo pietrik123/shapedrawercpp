@@ -12,7 +12,7 @@ class Rectangle : public Shape
     public:
     Rectangle(int sideA, int sideB);
     ~Rectangle() {}
-    void setDimension(int sideA, int sideB);
+    void setDimensions(int sideA, int sideB);
     int getSideA();
     int getSideB();
     void draw() const override;
@@ -25,7 +25,7 @@ class Triangle : public Shape
     public:
     Triangle(int base, int height);
     ~Triangle() {}
-    void setDimension(int base, int height);
+    void setDimensions(int base, int height);
     int getBase();
     int getHeight();
     void draw() const override;
