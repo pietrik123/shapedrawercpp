@@ -2,6 +2,15 @@
 
 #include <iostream>
 
+Shape::Shape() : m_ch{ '*' }
+{
+}
+
+void Shape::setChar(char mark)
+{
+    m_ch = mark;
+}
+
 Rectangle::Rectangle(int sideA, int sideB)
 {
     m_a = sideA;
@@ -27,7 +36,7 @@ void Rectangle::draw() const
     {
         for (auto j = 0; j < m_b; j++)
         {
-            std::cout << "#";
+            std::cout << m_ch;
         }
         std::cout << "\n";
     }
@@ -65,7 +74,7 @@ void Triangle::draw() const
         if (i == m_a-1) n = m_h;
         for (auto j = 0; j < n; j++)
         {
-            std::cout << "#";
+            std::cout << m_ch;
         }
         std::cout << "\n";
     }
@@ -93,7 +102,7 @@ void Square::draw() const
     {
         for (auto j = 0; j < m_a; j++)
         {
-            std::cout << "#";
+            std::cout << m_ch;
         }
         std::cout << "\n";
     }

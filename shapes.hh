@@ -4,7 +4,11 @@
 class Shape
 {
     public:
+        Shape();
         virtual void draw() const = 0;
+        void setChar(char mark);
+    protected:
+        char m_ch;
 };
 
 class Rectangle : public Shape
