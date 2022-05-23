@@ -36,10 +36,10 @@ class Triangle : public Shape
 class Square : public Shape
 {
     public:
-        Square(int lenghtA);
+        Square(int side);
         ~Square() {}
-        void setDimension(int lenghtA);
-        int getLenght();
+        void setDimension(int side);
+        int getSide();
         void draw() const override;
     private:
         int m_a;

@@ -72,17 +72,17 @@ void Triangle::draw() const
     std::cout << "\n\n";
 }
 
-Square::Square(int lenghtA)
+Square::Square(int side)
 {
-    m_a = lenghtA;
+    m_a = side;
 }
 
-void Square::setDimension(int lenghtA)
+void Square::setDimension(int side)
 {
-    m_a = lenghtA;
+    m_a = side;
 }
 
-int Square::getLenght()
+int Square::getSide()
 {
     return m_a;
 }
