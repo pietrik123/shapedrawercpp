@@ -71,3 +71,31 @@ void Triangle::draw() const
     }
     std::cout << "\n\n";
 }
+
+Square::Square(int side)
+{
+    m_a = side;
+}
+
+void Square::setDimension(int side)
+{
+    m_a = side;
+}
+
+int Square::getSide()
+{
+    return m_a;
+}
+
+void Square::draw() const
+{
+    for (auto i = 0; i < m_a; i++)
+    {
+        for (auto j = 0; j < m_a; j++)
+        {
+            std::cout << "#";
+        }
+        std::cout << "\n";
+    }
+    std::cout << "\n\n";
+}

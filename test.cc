@@ -55,3 +55,16 @@ void test2()
         s->draw();
     }
 }
+
+void test3()
+{
+    std::vector<Square> square
+    {
+        {1}, {2}, {5}, {8}
+    };
+
+    for (auto& s : square)
+    {
+        s.draw();
+    }
+}
