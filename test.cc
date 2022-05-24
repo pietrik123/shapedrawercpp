@@ -68,3 +68,11 @@ void test3()
         s.draw();
     }
 }
+
+void test4()
+{
+    Rectangle rect (3,4);
+    rect.draw();
+    rect.setChar('p');
+    rect.draw();
+}
