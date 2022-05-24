@@ -11,6 +11,9 @@ void loop();
 
 int main()
 {
+    std::cout << "\n--=== ShapeDrawer v0.1 ===--\n\n";
+    std::cout << "Type 'help' to print available commands\n\n";
+
     loop();
 }
 
