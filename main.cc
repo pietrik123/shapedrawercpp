@@ -8,9 +8,11 @@
 const std::string prompt = "shpdrwr>";
 
 void loop();
+void printWelcomeMessage();
 
 int main()
 {
+    printWelcomeMessage();
     loop();
 }
 
@@ -53,4 +55,10 @@ void loop()
         }
         delete cmd;
     }
+}
+
+void printWelcomeMessage()
+{
+    std::cout << "\n--=== ShapeDrawer v0.1 ===--\n\n";
+    std::cout << "Type 'help' to print available commands\n\n";
 }
