@@ -1,7 +1,9 @@
+#define CATCH_CONFIG_MAIN
+
 #include "shapes.hh"
 #include "command.hh"
 
-#include "catch_amalgamated.hpp"
+#include "catch.hpp"
 
 TEST_CASE("Simple command test")
 {
