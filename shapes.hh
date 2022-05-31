@@ -1,10 +1,12 @@
 #ifndef SHAPES_HH
 #define SHAPES_HH
+#include <iostream>
 
 class Shape
 {
     public:
         Shape();
+        virtual ~Shape() {}
         virtual void draw() const = 0;
         void setChar(char mark);
     protected:
