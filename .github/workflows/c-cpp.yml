@@ -13,5 +13,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+    - name: submodule
+      run: git submodule update --init --recursive --force
     - name: make
       run: make
