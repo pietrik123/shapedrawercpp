@@ -1,6 +1,5 @@
 #ifndef SHAPES_HH
 #define SHAPES_HH
-#include <iostream>
 
 class Shape
 {
