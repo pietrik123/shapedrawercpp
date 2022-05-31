@@ -24,7 +24,9 @@ bool CreateTriangleCmd::execute()
     {
         return false;
     }
-    m_receiver.addShape(new Triangle(a,h));
+    Triangle* tri = new Triangle(a,h);
+    m_receiver.addShape(tri);
+    tri->draw();
     return true;
 }
 

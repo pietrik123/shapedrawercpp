@@ -55,6 +55,11 @@ void loop()
         }
         delete cmd;
     }
+
+    for (auto& s : shapes)
+    {
+        delete s;
+    }
 }
 
 void printWelcomeMessage()

@@ -5,6 +5,7 @@ class Shape
 {
     public:
         Shape();
+        virtual ~Shape() {}
         virtual void draw() const = 0;
         void setChar(char mark);
     protected:
