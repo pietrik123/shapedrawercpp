@@ -32,6 +32,7 @@ int Rectangle::getSideB()
 
 void Rectangle::draw() const
 {
+    std::cout << std::endl;
     for (auto i = 0; i < m_a; i++)
     {
         for (auto j = 0; j < m_b; j++)
@@ -67,6 +68,7 @@ int Triangle::getHeight()
 
 void Triangle::draw() const
 {
+    std::cout << std::endl;
     for (auto i =0; i < m_a; i++)
     {
         int n = m_h * i / m_a + 1;
