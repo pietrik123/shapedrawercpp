@@ -60,8 +60,6 @@ void loop()
     {
         delete s;
     }
-
-    shapes.clear();
 }
 
 void printWelcomeMessage()
