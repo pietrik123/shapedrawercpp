@@ -28,6 +28,13 @@ public:
     bool execute() override;
 };
 
+class CreateRectangleCmd : public Command
+{
+public:
+    CreateRectangleCmd(CommandReceiver& r, const StringArgs& args);
+    bool execute() override;
+};
+
 class ExitCmd : public Command
 {
 public:

@@ -26,7 +26,29 @@ bool CreateTriangleCmd::execute()
     }
     Triangle* tri = new Triangle(a,h);
     m_receiver.addShape(tri);
-    tri->draw();
+    tri -> draw();
+    return true;
+}
+
+CreateRectangleCmd::CreateRectangleCmd(CommandReceiver& r, const StringArgs& args) : Command (r, args)
+{
+}
+
+bool CreateRectangleCmd::execute()
+{
+    if (m_args.size() < 2u)
+    {
+        return false;
+    }
+    int a = std::atoi(m_args[0].c_str());
+    int h = std::atoi(m_args[1].c_str());
+    if (a == 0 || h == 0)
+    {
+        return false;
+    }
+    Rectangle* rect = new Rectangle(a,h);
+    m_receiver.addShape(rect);
+    rect -> draw();
     return true;
 }
 
@@ -45,6 +67,10 @@ Command* createCommand(CommandReceiver& receiver, const std::string& cmdName, co
     if (cmdName == "tri")
     {
         return new CreateTriangleCmd(receiver, args);
+    }
+    else if (cmdName == "rect")
+    {
+        return new CreateRectangleCmd(receiver, args);
     }
     else if (cmdName == "exit")
     {
