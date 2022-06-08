@@ -35,6 +35,13 @@ public:
     bool execute() override;
 };
 
+class CreateSquareCmd : public Command
+{
+public:
+    CreateSquareCmd(CommandReceiver& r, const StringArgs& args);
+    bool execute() override;
+};
+
 class ExitCmd : public Command
 {
 public:

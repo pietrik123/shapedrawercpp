@@ -100,6 +100,7 @@ int Square::getSide()
 
 void Square::draw() const
 {
+    std::cout << std::endl;
     for (auto i = 0; i < m_a; i++)
     {
         for (auto j = 0; j < m_a; j++)

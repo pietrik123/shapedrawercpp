@@ -52,6 +52,27 @@ bool CreateRectangleCmd::execute()
     return true;
 }
 
+CreateSquareCmd::CreateSquareCmd(CommandReceiver& r, const StringArgs& args) : Command (r, args)
+{
+}
+
+bool CreateSquareCmd::execute()
+{
+    if (m_args.size() < 1u)
+    {
+        return false;
+    }
+    int a = std::atoi(m_args[0].c_str());
+    if (a == 0)
+    {
+        return false;
+    }
+    Square* square = new Square(a);
+    m_receiver.addShape(square);
+    square -> draw();
+    return true;
+}
+
 ExitCmd::ExitCmd(CommandReceiver& r, const StringArgs& args) : Command(r, args)
 {
 }
@@ -71,6 +92,10 @@ Command* createCommand(CommandReceiver& receiver, const std::string& cmdName, co
     else if (cmdName == "rect")
     {
         return new CreateRectangleCmd(receiver, args);
+    }
+    else if (cmdName == "square")
+    {
+        return new CreateSquareCmd(receiver, args);
     }
     else if (cmdName == "exit")
     {
