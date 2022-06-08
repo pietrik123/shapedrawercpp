@@ -42,6 +42,13 @@ public:
     bool execute() override;
 };
 
+class CreateListShapesCmd : public Command
+{
+public:
+    CreateListShapesCmd(CommandReceiver& r, const StringArgs& args);
+    bool execute() override;
+};
+
 class ExitCmd : public Command
 {
 public:
@@ -59,6 +66,7 @@ public:
     bool shouldExit();
     void requestExit();
     void addShape(Shape* s);
+    Shapes& getShapesVector();
 };
 
 StringArgs parseUserInput(const std::string& fullCmdStr);

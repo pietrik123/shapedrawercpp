@@ -73,6 +73,24 @@ bool CreateSquareCmd::execute()
     return true;
 }
 
+CreateListShapesCmd::CreateListShapesCmd(CommandReceiver& r, const StringArgs& args) : Command(r, args)
+{
+}
+
+bool CreateListShapesCmd::execute()
+{
+    Shapes& shapesVector = m_receiver.getShapesVector();
+    std::cout << "\n";
+    for (size_t i = 0; i < shapesVector.size(); i++)
+    {
+        std::cout << i + 1 << "> ";
+        shapesVector[i]->printInfo();
+        std::cout << "\n";
+    }
+    std::cout << "\n";
+    return true;
+}
+
 ExitCmd::ExitCmd(CommandReceiver& r, const StringArgs& args) : Command(r, args)
 {
 }
@@ -96,6 +114,10 @@ Command* createCommand(CommandReceiver& receiver, const std::string& cmdName, co
     else if (cmdName == "square")
     {
         return new CreateSquareCmd(receiver, args);
+    }
+    else if (cmdName == "list")
+    {
+        return new CreateListShapesCmd(receiver, args);
     }
     else if (cmdName == "exit")
     {
@@ -152,4 +174,9 @@ void CommandReceiver::addShape(Shape* s)
     {
         m_shapes.push_back(s);
     }
+}
+
+Shapes& CommandReceiver::getShapesVector()
+{
+    return m_shapes;
 }
