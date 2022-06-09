@@ -115,7 +115,7 @@ Command* createCommand(CommandReceiver& receiver, const std::string& cmdName, co
     {
         return new CreateSquareCmd(receiver, args);
     }
-    else if (cmdName == "list")
+    else if (cmdName == "listshapes")
     {
         return new CreateListShapesCmd(receiver, args);
     }
