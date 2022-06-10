@@ -7,6 +7,7 @@ class Shape
         Shape();
         virtual ~Shape() {}
         virtual void draw() const = 0;
+        virtual void printInfo() const = 0;
         void setChar(char mark);
     protected:
         char m_ch;
@@ -21,6 +22,7 @@ class Rectangle : public Shape
         int getSideA();
         int getSideB();
         void draw() const override;
+        void printInfo() const override;
     private:
         int m_a, m_b;
 };
@@ -34,6 +36,7 @@ class Triangle : public Shape
         int getBase();
         int getHeight();
         void draw() const override;
+        void printInfo() const override;
     private:
         int m_a, m_h;
 };
@@ -46,6 +49,7 @@ class Square : public Shape
         void setDimension(int side);
         int getSide();
         void draw() const override;
+        void printInfo() const override;
     private:
         int m_a;
 };

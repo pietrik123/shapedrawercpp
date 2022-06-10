@@ -44,6 +44,11 @@ void Rectangle::draw() const
     std::cout << "\n\n";
 }
 
+void Rectangle::printInfo() const
+{
+    std::cout << "Rectangle : " << m_a << ", " << m_b;
+}
+
 Triangle::Triangle(int base, int height)
 {
     m_a = base;
@@ -83,6 +88,11 @@ void Triangle::draw() const
     std::cout << "\n\n";
 }
 
+void Triangle::printInfo() const
+{
+    std::cout << "Triangle : " << m_a << ", " << m_h;
+}
+
 Square::Square(int side)
 {
     m_a = side;
@@ -110,4 +120,9 @@ void Square::draw() const
         std::cout << "\n";
     }
     std::cout << "\n\n";
+}
+
+void Square::printInfo() const
+{
+    std::cout << "Square : " << m_a;
 }
