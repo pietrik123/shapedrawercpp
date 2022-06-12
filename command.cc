@@ -91,6 +91,48 @@ bool CreateListShapesCmd::execute()
     return true;
 }
 
+CreateDrawCmd::CreateDrawCmd(CommandReceiver& r, const StringArgs& args) : Command(r, args)
+{
+}
+
+bool CreateDrawCmd::execute()
+{
+    Shapes& shapesVector = m_receiver.getShapesVector();
+    std::cout << "\n";
+    if (m_args.size() < 1u)
+    {
+        return false;
+    }
+    if (m_args[0] == "all")
+    {
+        for (size_t i = 0; i <shapesVector.size(); i++)
+        {
+        std::cout << i + 1 << "> ";
+        shapesVector[i]->printInfo();
+        std::cout << "\n";
+        shapesVector[i]->draw();
+        std::cout << "\n";
+        }
+    }
+    else
+    {
+        int x = std::atoi(m_args[0].c_str());
+        if (x == 0 || x > shapesVector.size())
+        {   
+        std::cout << "Invalid shape number!\n";
+        return false;
+        }
+        else
+        {
+        std::cout << x << "> ";
+        shapesVector[x - 1]->printInfo();
+        std::cout << "\n";
+        shapesVector[x - 1]->draw();
+        }
+    }
+    return true;
+}
+
 ExitCmd::ExitCmd(CommandReceiver& r, const StringArgs& args) : Command(r, args)
 {
 }
@@ -118,6 +160,10 @@ Command* createCommand(CommandReceiver& receiver, const std::string& cmdName, co
     else if (cmdName == "listshapes")
     {
         return new CreateListShapesCmd(receiver, args);
+    }
+    else if (cmdName == "draw")
+    {
+        return new CreateDrawCmd(receiver, args);
     }
     else if (cmdName == "exit")
     {
