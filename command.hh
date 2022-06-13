@@ -49,6 +49,13 @@ public:
     bool execute() override;
 };
 
+class DrawCmd : public Command
+{
+public:
+    DrawCmd(CommandReceiver& r, const StringArgs& args);
+    bool execute() override;
+};
+
 class ExitCmd : public Command
 {
 public:
