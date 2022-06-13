@@ -26,7 +26,7 @@ bool CreateTriangleCmd::execute()
     }
     Triangle* tri = new Triangle(a,h);
     m_receiver.addShape(tri);
-    tri -> draw();
+    tri->draw();
     return true;
 }
 
@@ -48,7 +48,7 @@ bool CreateRectangleCmd::execute()
     }
     Rectangle* rect = new Rectangle(a,h);
     m_receiver.addShape(rect);
-    rect -> draw();
+    rect->draw();
     return true;
 }
 
@@ -69,7 +69,7 @@ bool CreateSquareCmd::execute()
     }
     Square* square = new Square(a);
     m_receiver.addShape(square);
-    square -> draw();
+    square->draw();
     return true;
 }
 
@@ -91,11 +91,11 @@ bool CreateListShapesCmd::execute()
     return true;
 }
 
-CreateDrawCmd::CreateDrawCmd(CommandReceiver& r, const StringArgs& args) : Command(r, args)
+DrawCmd::DrawCmd(CommandReceiver& r, const StringArgs& args) : Command(r, args)
 {
 }
 
-bool CreateDrawCmd::execute()
+bool DrawCmd::execute()
 {
     Shapes& shapesVector = m_receiver.getShapesVector();
     std::cout << "\n";
@@ -107,11 +107,11 @@ bool CreateDrawCmd::execute()
     {
         for (size_t i = 0; i <shapesVector.size(); i++)
         {
-        std::cout << i + 1 << "> ";
-        shapesVector[i]->printInfo();
-        std::cout << "\n";
-        shapesVector[i]->draw();
-        std::cout << "\n";
+            std::cout << i + 1 << "> ";
+            shapesVector[i]->printInfo();
+            std::cout << "\n";
+            shapesVector[i]->draw();
+            std::cout << "\n";
         }
     }
     else
@@ -119,15 +119,15 @@ bool CreateDrawCmd::execute()
         int x = std::atoi(m_args[0].c_str());
         if (x == 0 || x > shapesVector.size())
         {   
-        std::cout << "Invalid shape number!\n";
-        return false;
+            std::cout << "Invalid shape number!\n";
+            return false;
         }
         else
         {
-        std::cout << x << "> ";
-        shapesVector[x - 1]->printInfo();
-        std::cout << "\n";
-        shapesVector[x - 1]->draw();
+            std::cout << x << "> ";
+            shapesVector[x - 1]->printInfo();
+            std::cout << "\n";
+            shapesVector[x - 1]->draw();
         }
     }
     return true;
@@ -163,7 +163,7 @@ Command* createCommand(CommandReceiver& receiver, const std::string& cmdName, co
     }
     else if (cmdName == "draw")
     {
-        return new CreateDrawCmd(receiver, args);
+        return new DrawCmd(receiver, args);
     }
     else if (cmdName == "exit")
     {

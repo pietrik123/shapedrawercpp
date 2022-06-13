@@ -49,10 +49,10 @@ public:
     bool execute() override;
 };
 
-class CreateDrawCmd : public Command
+class DrawCmd : public Command
 {
 public:
-    CreateDrawCmd(CommandReceiver& r, const StringArgs& args);
+    DrawCmd(CommandReceiver& r, const StringArgs& args);
     bool execute() override;
 };
 
