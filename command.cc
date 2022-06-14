@@ -157,7 +157,7 @@ Command* createCommand(CommandReceiver& receiver, const std::string& cmdName, co
     {
         return new CreateSquareCmd(receiver, args);
     }
-    else if (cmdName == "listshapes")
+    else if (cmdName == "list-shapes")
     {
         return new CreateListShapesCmd(receiver, args);
     }
@@ -185,7 +185,7 @@ StringArgs parseUserInput(const std::string& fullCmdStr)
     for (auto i=0u; i < inputSize; i++)
     {
         char c = fullCmdStr[i];
-        if (0 != std::isalnum(c))
+        if (std::isalnum(c) != 0 || c == '-')
         {
             token += c;
         }
