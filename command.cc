@@ -185,7 +185,7 @@ StringArgs parseUserInput(const std::string& fullCmdStr)
     for (auto i=0u; i < inputSize; i++)
     {
         char c = fullCmdStr[i];
-        if (std::isalnum(c) != 0)
+        if (0 != std::isalnum(c))
         {
             token += c;
         }
