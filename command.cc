@@ -111,7 +111,6 @@ bool DrawCmd::execute()
             shapesVector[i]->printInfo();
             std::cout << "\n";
             shapesVector[i]->draw();
-            //std::cout << "\n";
         }
     }
     else
