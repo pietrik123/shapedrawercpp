@@ -1,3 +1,5 @@
+INCL_DEPS = shapes.hh command.hh
+
 all: shapedrawer unittest examples
 
 shapedrawer: main.o shapes.o command.o
@@ -9,10 +11,10 @@ unittest: shapes.o command.o ut/unittest.o
 examples: test.o examples.o shapes.o examples.o
 	$(CXX) -o examples $^
 
-%.o: %.cc
+%.o: %.cc $(INCL_DEPS)
 	$(CXX) -c -o $@ $<
 
-ut/%.o: ut/%.cc
+ut/%.o: ut/%.cc $(INCL_DEPS)
 	$(CXX) -c -o $@ $< -ICatch2/single_include/catch2/ -I./
 
 .PHONY: clean
