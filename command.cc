@@ -118,7 +118,7 @@ bool DrawCmd::execute()
         int x = std::atoi(m_args[0].c_str());
         if (x == 0 || x > shapesVector.size())
         {   
-            std::cout << "Invalid shape number!\n";
+            std::cout << "Invalid shape number!";
             return false;
         }
         else
@@ -140,30 +140,36 @@ bool SetStyleCmd::execute()
 {
     Shapes& shapesVector = m_receiver.getShapesVector();
     std::cout << "\n";   
-    std::string x = m_args[1];
-    char tempChar = x[0];
+    std::string shapeStyleString = m_args[1];
+    char shapeStyleChar = shapeStyleString[0];
+    
     if (m_args.size()< 2u)
     {
+        return false;
+    }
+    if (shapeStyleString.size() > 1)
+    {
+        std::cout << "Shape character style should be single character";
         return false;
     }
     if (m_args[0] == "all")
     {
         for (size_t i = 0; i < shapesVector.size(); i++)
         {
-            shapesVector[i]->setChar(tempChar);
+            shapesVector[i]->setChar(shapeStyleChar);
         }
     }
     else 
     {
-        int y = std::atoi(m_args[0].c_str());
-        if (y == 0 || y > shapesVector.size())
+        int x = std::atoi(m_args[0].c_str());
+        if (x == 0 || x > shapesVector.size())
         {
-            std::cout << "Invalid shape number!\n";
+            std::cout << "Invalid shape number!";
             return false;
         }
         else
         {
-            shapesVector[y-1]->setChar(tempChar);
+            shapesVector[x-1]->setChar(shapeStyleChar);
         }
     }
     return true;
@@ -211,7 +217,7 @@ Command* createCommand(CommandReceiver& receiver, const std::string& cmdName, co
     }
     else
     {
-        std::cout << "Invalid command\n";
+        std::cout << "\nInvalid command\n";
         return nullptr;
     }
 }
@@ -225,8 +231,7 @@ StringArgs parseUserInput(const std::string& fullCmdStr)
     for (auto i = 0u; i < inputSize; i++)
     {
         char c = fullCmdStr[i];
-        std::string availableSpecialChar = "!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~";
-        if (std::isalnum(c) != 0 || availableSpecialChar.find(c) != std::string::npos)
+        if (c > 32 && c < 127)
         {
             token += c;
         }
@@ -237,7 +242,6 @@ StringArgs parseUserInput(const std::string& fullCmdStr)
         }
         if (c == 0) break;
     }
-
     return tokens;
 }
 
