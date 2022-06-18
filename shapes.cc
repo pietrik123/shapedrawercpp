@@ -16,11 +16,13 @@ Rectangle::Rectangle(int sideA, int sideB)
     m_a = sideA;
     m_b = sideB;
 }
+
 void Rectangle::setDimensions(int sideA, int sideB)
 {
     m_a = sideA;
     m_b = sideB;
 }
+
 int Rectangle::getSideA()
 {
     return m_a;
@@ -32,21 +34,23 @@ int Rectangle::getSideB()
 
 void Rectangle::draw() const
 {
-    std::cout << std::endl;
-    for (auto i = 0; i < m_a; i++)
-    {
-        for (auto j = 0; j < m_b; j++)
-        {
-            std::cout << m_ch;
-        }
-        std::cout << "\n";
-    }
-    std::cout << "\n\n";
+    std::cout << getShapeStr();
 }
 
 void Rectangle::printInfo() const
 {
     std::cout << "Rectangle : " << m_a << ", " << m_b;
+}
+
+std::string Rectangle::getShapeStr() const
+{
+    const auto SIZE = m_a * (m_b + 1);
+    std::string shapeString(SIZE, m_ch);
+    
+    for(auto i = m_b; i <= SIZE; i+= m_b + 1)
+        shapeString[i] = '\n';
+    
+    return shapeString;
 }
 
 Triangle::Triangle(int base, int height)
@@ -73,24 +77,28 @@ int Triangle::getHeight()
 
 void Triangle::draw() const
 {
-    std::cout << std::endl;
-    for (auto i =0; i < m_a; i++)
-    {
-        int n = m_h * i / m_a + 1;
-        if (i == 0) n = 1;
-        if (i == m_a-1) n = m_h;
-        for (auto j = 0; j < n; j++)
-        {
-            std::cout << m_ch;
-        }
-        std::cout << "\n";
-    }
-    std::cout << "\n\n";
+    std::cout << getShapeStr();
 }
 
 void Triangle::printInfo() const
 {
     std::cout << "Triangle : " << m_a << ", " << m_h;
+}
+
+std::string Triangle::getShapeStr() const
+{
+    std::string shapeString;
+
+    for (auto i =0; i < m_a; i++)
+    {
+        int n = m_h * i / m_a + 1;
+        if (i == 0) n = 1;
+        if (i == m_a-1) n = m_h;
+            shapeString += std::string(n+1,m_ch);
+        shapeString[shapeString.size() - 1] = '\n';
+    }
+
+    return shapeString;
 }
 
 Square::Square(int side)
@@ -110,19 +118,22 @@ int Square::getSide()
 
 void Square::draw() const
 {
-    std::cout << std::endl;
-    for (auto i = 0; i < m_a; i++)
-    {
-        for (auto j = 0; j < m_a; j++)
-        {
-            std::cout << m_ch;
-        }
-        std::cout << "\n";
-    }
-    std::cout << "\n\n";
+    std::cout << getShapeStr();
 }
 
 void Square::printInfo() const
 {
     std::cout << "Square : " << m_a;
 }
+
+std::string Square::getShapeStr() const
+{
+    const auto SIZE = m_a * (m_a + 1);
+    std::string shapeString(SIZE, m_ch);
+    
+    for(auto i = m_a; i <= SIZE; i+= m_a + 1)
+        shapeString[i] = '\n';
+    
+    return shapeString;
+}
+

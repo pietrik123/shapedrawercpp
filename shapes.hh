@@ -1,6 +1,9 @@
 #ifndef SHAPES_HH
 #define SHAPES_HH
 
+#include <string>
+
+
 class Shape
 {
     public:
@@ -11,6 +14,7 @@ class Shape
         void setChar(char mark);
     protected:
         char m_ch;
+	virtual std::string getShapeStr() const = 0;
 };
 
 class Rectangle : public Shape
@@ -25,6 +29,7 @@ class Rectangle : public Shape
         void printInfo() const override;
     private:
         int m_a, m_b;
+	std::string getShapeStr() const override;
 };
 
 class Triangle : public Shape
@@ -39,6 +44,7 @@ class Triangle : public Shape
         void printInfo() const override;
     private:
         int m_a, m_h;
+	std::string getShapeStr() const override;
 };
 
 class Square : public Shape
@@ -52,6 +58,7 @@ class Square : public Shape
         void printInfo() const override;
     private:
         int m_a;
+	std::string getShapeStr() const override;
 };
 
 #endif

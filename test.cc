@@ -2,6 +2,7 @@
 #include "shapes.hh"
 
 #include <vector>
+#include <iostream>
 
 void test1()
 {
@@ -18,11 +19,13 @@ void test1()
     for (auto& t : triangles)
     {
         t.draw();
+	std::cout << '\n';
     }
 
     for (auto& r : rectangles)
     {
         r.draw();
+	std::cout << '\n';
     }
 }
 
@@ -53,6 +56,7 @@ void test2()
     for (auto& s : shapes)
     {
         s->draw();
+	std::cout << '\n';
     }
 }
 
@@ -66,6 +70,7 @@ void test3()
     for (auto& s : square)
     {
         s.draw();
+	std::cout << '\n';
     }
 }
 
@@ -73,6 +78,8 @@ void test4()
 {
     Rectangle rect (3,4);
     rect.draw();
+    std::cout << '\n';
     rect.setChar('p');
     rect.draw();
+    std::cout << '\n';
 }
