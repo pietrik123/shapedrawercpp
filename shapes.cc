@@ -45,7 +45,7 @@ void Rectangle::printInfo() const
 
 std::string Rectangle::getShapeStr() const
 {
-    const auto SIZE = (m_a + 1) * m_b;
+    const auto SIZE = (m_a + 1) * m_b; // area with newline in every 'row'
     std::string shapeString(SIZE, m_ch);
     
     for(auto i = m_a; i <= SIZE; i+= m_a + 1)
@@ -91,15 +91,16 @@ std::string Triangle::getShapeStr() const
     if(m_h == 1)
 	return "*\n";
 
-    std::string shapeString;
+    // TODO: Possibly worth precalculating string length for bigger shapes
+    std::string shapeString; 
     double diff = static_cast<double>(m_a-1)/(m_h-1);
 
     for (auto i = 0; i < m_h; i++)
     {
+	// magic number '2' - one for char and one for newline
         shapeString += std::string(2 + round(i*diff), m_ch);
         shapeString[shapeString.size() - 1] = '\n';
     }
-
     return shapeString;
 }
 
@@ -130,7 +131,7 @@ void Square::printInfo() const
 
 std::string Square::getShapeStr() const
 {
-    const auto SIZE = m_a * (m_a + 1);
+    const auto SIZE = m_a * (m_a + 1); // area with newline in every 'row'
     std::string shapeString(SIZE, m_ch);
     
     for(auto i = m_a; i <= SIZE; i+= m_a + 1)
