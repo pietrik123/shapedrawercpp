@@ -30,6 +30,19 @@ bool CreateTriangleCmd::execute()
     return true;
 }
 
+void CreateTriangleCmd::printGeneralHelp() const
+{
+    std::cout << "tri\n";
+    std::cout << "Creates a triangle shape, saves it in memory and draws it on the screen\n";
+}
+
+void CreateTriangleCmd::printDetailedHelp() const
+{
+    printGeneralHelp();
+    std::cout << "Syntax: tri <dim_a> <dim_h>\n";
+    std::cout << "Arguments:\ndim_a, dim_h - triangle legs lengths of type unsigned integer\n";
+}
+
 CreateRectangleCmd::CreateRectangleCmd(CommandReceiver& r, const StringArgs& args) : Command (r, args)
 {
 }
@@ -50,6 +63,19 @@ bool CreateRectangleCmd::execute()
     m_receiver.addShape(rect);
     rect->draw();
     return true;
+}
+
+void CreateRectangleCmd::printGeneralHelp() const
+{
+    std::cout << "rect\n";
+    std::cout << "Creates a rectangle shape, saves it in memory and draws it on the screen\n";
+}
+
+void CreateRectangleCmd::printDetailedHelp() const
+{
+    printGeneralHelp();
+    std::cout << "Syntax: rect <dim_a> <dim_b>\n";
+    std::cout << "Arguments:\ndim_a, dim_b - lengths of rectangle sides of type unsigned integer\n";
 }
 
 CreateSquareCmd::CreateSquareCmd(CommandReceiver& r, const StringArgs& args) : Command (r, args)
@@ -73,6 +99,19 @@ bool CreateSquareCmd::execute()
     return true;
 }
 
+void CreateSquareCmd::printGeneralHelp() const
+{
+    std::cout << "square\n";
+    std::cout << "Creates a square shape, saves it in memory and draws it on the screen\n";
+}
+
+void CreateSquareCmd::printDetailedHelp() const
+{
+    printGeneralHelp();
+    std::cout << "Syntax: square <dim_a>\n";
+    std::cout << "Arguments:\ndim_a - length of square side of type unsigned integer\n";
+}
+
 CreateListShapesCmd::CreateListShapesCmd(CommandReceiver& r, const StringArgs& args) : Command(r, args)
 {
 }
@@ -89,6 +128,17 @@ bool CreateListShapesCmd::execute()
     }
     std::cout << "\n";
     return true;
+}
+
+void CreateListShapesCmd::printGeneralHelp() const
+{
+    std::cout << "list-shapes\n";
+    std::cout << "Prints out shapes which are stored in memory\n";
+}
+void CreateListShapesCmd::printDetailedHelp() const
+{
+    printGeneralHelp();
+    std::cout << "Syntax: list-shapes\n";
 }
 
 DrawCmd::DrawCmd(CommandReceiver& r, const StringArgs& args) : Command(r, args)
@@ -130,6 +180,23 @@ bool DrawCmd::execute()
         }
     }
     return true;
+}
+
+void DrawCmd::printGeneralHelp() const
+{
+    std::cout << "draw\n";
+    std::cout << "Draw shape (or shapes) on the console screen\n";
+}
+
+void DrawCmd::printDetailedHelp() const
+{
+    printGeneralHelp();
+    std::cout << "Syntax:\n"
+            << "draw <all>\n"
+            << "draw <shape_id>\n";
+    std::cout << "Arguments:\n"
+            << "all - tells the program that is should draw all shapes which are stored in memory\n"
+            << "shape_id - id of the shape which may be taken by \"list-shapes\" command\n";
 }
 
 SetStyleCmd::SetStyleCmd(CommandReceiver&r, const StringArgs& args) : Command(r, args)
@@ -175,6 +242,24 @@ bool SetStyleCmd::execute()
     return true;
 }
 
+void SetStyleCmd::printGeneralHelp() const
+{
+    std::cout << "set-style\n";
+    std::cout << "Sets ascii character with witch a shape is drawn\n";
+}
+
+void SetStyleCmd::printDetailedHelp() const
+{
+    printGeneralHelp();
+    std::cout << "Syntax:\n"
+            << "set-style <all> <character>\n"
+            << "set-style <shape_id> <character>\n";
+    std::cout << "Arguments:\n"
+            << "all - changes the style of all shapes stored in program memory\n"
+            << "shape_id - identifier of a shape of which style is set up, the id can be taken by \"list-shapes\" command\n"
+            << "character - ascii character with which the shape will be drawn\n";
+}
+
 ExitCmd::ExitCmd(CommandReceiver& r, const StringArgs& args) : Command(r, args)
 {
 }
@@ -183,6 +268,17 @@ bool ExitCmd::execute()
 {
     m_receiver.requestExit();
     return true;
+}
+
+void ExitCmd::printGeneralHelp() const
+{
+    std::cout << "exit\n";
+    std::cout << "Shall terminate the shapedrawer process\n";
+}
+
+void ExitCmd::printDetailedHelp() const
+{
+    printGeneralHelp();
 }
 
 Command* createCommand(CommandReceiver& receiver, const std::string& cmdName, const StringArgs& args)

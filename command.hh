@@ -19,6 +19,8 @@ protected:
 public:
     Command(CommandReceiver& r, const StringArgs& args);
     virtual bool execute() { return false; }
+    virtual void printGeneralHelp() const = 0;
+    virtual void printDetailedHelp() const = 0;
 };
 
 class CreateTriangleCmd : public Command
@@ -26,6 +28,8 @@ class CreateTriangleCmd : public Command
 public:
     CreateTriangleCmd(CommandReceiver& r, const StringArgs& args);
     bool execute() override;
+    void printGeneralHelp() const override;
+    void printDetailedHelp() const override; 
 };
 
 class CreateRectangleCmd : public Command
@@ -33,6 +37,8 @@ class CreateRectangleCmd : public Command
 public:
     CreateRectangleCmd(CommandReceiver& r, const StringArgs& args);
     bool execute() override;
+    void printGeneralHelp() const override;
+    void printDetailedHelp() const override; 
 };
 
 class CreateSquareCmd : public Command
@@ -40,6 +46,8 @@ class CreateSquareCmd : public Command
 public:
     CreateSquareCmd(CommandReceiver& r, const StringArgs& args);
     bool execute() override;
+    void printGeneralHelp() const override;
+    void printDetailedHelp() const override; 
 };
 
 class CreateListShapesCmd : public Command
@@ -47,6 +55,8 @@ class CreateListShapesCmd : public Command
 public:
     CreateListShapesCmd(CommandReceiver& r, const StringArgs& args);
     bool execute() override;
+    void printGeneralHelp() const override;
+    void printDetailedHelp() const override; 
 };
 
 class DrawCmd : public Command
@@ -54,6 +64,8 @@ class DrawCmd : public Command
 public:
     DrawCmd(CommandReceiver& r, const StringArgs& args);
     bool execute() override;
+    void printGeneralHelp() const override;
+    void printDetailedHelp() const override; 
 };
 
 class SetStyleCmd : public Command
@@ -61,6 +73,8 @@ class SetStyleCmd : public Command
 public:
     SetStyleCmd(CommandReceiver& r, const StringArgs& args);
     bool execute() override;
+    void printGeneralHelp() const override;
+    void printDetailedHelp() const override; 
 };
 
 class ExitCmd : public Command
@@ -68,6 +82,8 @@ class ExitCmd : public Command
 public:
     ExitCmd(CommandReceiver& r, const StringArgs& args);
     bool execute() override;
+    void printGeneralHelp() const override;
+    void printDetailedHelp() const override; 
 };
 
 class CommandReceiver
