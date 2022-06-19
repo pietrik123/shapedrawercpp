@@ -2,6 +2,15 @@
 #include "shapes.hh"
 
 #include <vector>
+#include <iostream>
+
+void drawShapeWithInfo(const Shape* shape)
+{
+    shape->printInfo();
+    shape->draw();
+    std::cout << "\n";
+}
+
 
 void test1()
 {
@@ -17,12 +26,12 @@ void test1()
 
     for (auto& t : triangles)
     {
-        t.draw();
+	drawShapeWithInfo(&t);
     }
 
     for (auto& r : rectangles)
     {
-        r.draw();
+	drawShapeWithInfo(&r);
     }
 }
 
@@ -52,7 +61,7 @@ void test2()
 
     for (auto& s : shapes)
     {
-        s->draw();
+	drawShapeWithInfo(s);
     }
 }
 
@@ -65,14 +74,14 @@ void test3()
 
     for (auto& s : square)
     {
-        s.draw();
+	drawShapeWithInfo(&s);
     }
 }
 
 void test4()
 {
     Rectangle rect (3,4);
-    rect.draw();
+    drawShapeWithInfo(&rect);
     rect.setChar('p');
-    rect.draw();
+    drawShapeWithInfo(&rect);
 }
