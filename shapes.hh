@@ -12,9 +12,9 @@ class Shape
         virtual void draw() const = 0;
         virtual void printInfo() const = 0;
         void setChar(char mark);
+	virtual std::string getShapeStr() const = 0;
     protected:
         char m_ch;
-	virtual std::string getShapeStr() const = 0;
 };
 
 class Rectangle : public Shape
@@ -27,9 +27,9 @@ class Rectangle : public Shape
         int getSideB();
         void draw() const override;
         void printInfo() const override;
+	std::string getShapeStr() const override;
     private:
         int m_a, m_b;
-	std::string getShapeStr() const override;
 };
 
 class Triangle : public Shape
@@ -42,9 +42,9 @@ class Triangle : public Shape
         int getHeight();
         void draw() const override;
         void printInfo() const override;
+	std::string getShapeStr() const override;
     private:
         int m_a, m_h;
-	std::string getShapeStr() const override;
 };
 
 class Square : public Shape
@@ -56,9 +56,9 @@ class Square : public Shape
         int getSide();
         void draw() const override;
         void printInfo() const override;
+	std::string getShapeStr() const override;
     private:
         int m_a;
-	std::string getShapeStr() const override;
 };
 
 #endif

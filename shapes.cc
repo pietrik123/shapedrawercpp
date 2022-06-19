@@ -1,6 +1,7 @@
 #include "shapes.hh"
 
 #include <iostream>
+#include <cmath>
 
 Shape::Shape() : m_ch{ '*' }
 {
@@ -39,15 +40,15 @@ void Rectangle::draw() const
 
 void Rectangle::printInfo() const
 {
-    std::cout << "Rectangle : " << m_a << ", " << m_b;
+    std::cout << "Rectangle : " << m_a << ", " << m_b << "\n";
 }
 
 std::string Rectangle::getShapeStr() const
 {
-    const auto SIZE = m_a * (m_b + 1);
+    const auto SIZE = (m_a + 1) * m_b;
     std::string shapeString(SIZE, m_ch);
     
-    for(auto i = m_b; i <= SIZE; i+= m_b + 1)
+    for(auto i = m_a; i <= SIZE; i+= m_a + 1)
         shapeString[i] = '\n';
     
     return shapeString;
@@ -82,19 +83,20 @@ void Triangle::draw() const
 
 void Triangle::printInfo() const
 {
-    std::cout << "Triangle : " << m_a << ", " << m_h;
+    std::cout << "Triangle : " << m_a << ", " << m_h << "\n";
 }
 
 std::string Triangle::getShapeStr() const
 {
-    std::string shapeString;
+    if(m_h == 1)
+	return "*\n";
 
-    for (auto i =0; i < m_a; i++)
+    std::string shapeString;
+    double diff = static_cast<double>(m_a-1)/(m_h-1);
+
+    for (auto i = 0; i < m_h; i++)
     {
-        int n = m_h * i / m_a + 1;
-        if (i == 0) n = 1;
-        if (i == m_a-1) n = m_h;
-            shapeString += std::string(n+1,m_ch);
+        shapeString += std::string(2 + round(i*diff), m_ch);
         shapeString[shapeString.size() - 1] = '\n';
     }
 
@@ -123,7 +125,7 @@ void Square::draw() const
 
 void Square::printInfo() const
 {
-    std::cout << "Square : " << m_a;
+    std::cout << "Square : " << m_a << "\n";
 }
 
 std::string Square::getShapeStr() const

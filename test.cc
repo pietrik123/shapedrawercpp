@@ -4,6 +4,14 @@
 #include <vector>
 #include <iostream>
 
+void drawShapeWithInfo(const Shape* shape)
+{
+    shape->printInfo();
+    shape->draw();
+    std::cout << "\n";
+}
+
+
 void test1()
 {
     const std::vector<Triangle> triangles
@@ -18,14 +26,12 @@ void test1()
 
     for (auto& t : triangles)
     {
-        t.draw();
-	std::cout << '\n';
+	drawShapeWithInfo(&t);
     }
 
     for (auto& r : rectangles)
     {
-        r.draw();
-	std::cout << '\n';
+	drawShapeWithInfo(&r);
     }
 }
 
@@ -55,8 +61,7 @@ void test2()
 
     for (auto& s : shapes)
     {
-        s->draw();
-	std::cout << '\n';
+	drawShapeWithInfo(s);
     }
 }
 
@@ -69,17 +74,14 @@ void test3()
 
     for (auto& s : square)
     {
-        s.draw();
-	std::cout << '\n';
+	drawShapeWithInfo(&s);
     }
 }
 
 void test4()
 {
     Rectangle rect (3,4);
-    rect.draw();
-    std::cout << '\n';
+    drawShapeWithInfo(&rect);
     rect.setChar('p');
-    rect.draw();
-    std::cout << '\n';
+    drawShapeWithInfo(&rect);
 }
