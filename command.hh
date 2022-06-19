@@ -56,6 +56,13 @@ public:
     bool execute() override;
 };
 
+class SetStyleCmd : public Command
+{
+public:
+    SetStyleCmd(CommandReceiver& r, const StringArgs& args);
+    bool execute() override;
+};
+
 class ExitCmd : public Command
 {
 public:

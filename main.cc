@@ -32,7 +32,7 @@ void loop()
         std::vector<std::string> tokens = parseUserInput(cmdFullStr);
         if (tokens.empty())
         {
-            std::cout << "Failed to parse user input!\n";
+            std::cout << "\nFailed to parse user input!\n\n";
             continue;
         }
 
@@ -46,12 +46,12 @@ void loop()
         Command* cmd = createCommand(cmdReceiver, cmdName, args);
         if (!cmd)
         {
-            std::cout << "Failed to create a command!\n";
+            std::cout << "Failed to create a command!\n\n";
             continue;
         }
         if (!cmd->execute())
         {
-            std::cout << "Command execution failed!\n";
+            std::cout << "\nCommand execution failed!\n\n";
         }
         delete cmd;
     }

@@ -111,7 +111,6 @@ bool DrawCmd::execute()
             shapesVector[i]->printInfo();
             std::cout << "\n";
             shapesVector[i]->draw();
-            std::cout << "\n";
         }
     }
     else
@@ -119,7 +118,7 @@ bool DrawCmd::execute()
         int x = std::atoi(m_args[0].c_str());
         if (x == 0 || x > shapesVector.size())
         {   
-            std::cout << "Invalid shape number!\n";
+            std::cout << "Invalid shape number!";
             return false;
         }
         else
@@ -128,6 +127,49 @@ bool DrawCmd::execute()
             shapesVector[x - 1]->printInfo();
             std::cout << "\n";
             shapesVector[x - 1]->draw();
+        }
+    }
+    return true;
+}
+
+SetStyleCmd::SetStyleCmd(CommandReceiver&r, const StringArgs& args) : Command(r, args)
+{
+}
+
+bool SetStyleCmd::execute()
+{
+    Shapes& shapesVector = m_receiver.getShapesVector();
+    std::cout << "\n";   
+    std::string shapeStyleString = m_args[1];
+    char shapeStyleChar = shapeStyleString[0];
+    
+    if (m_args.size()< 2u)
+    {
+        return false;
+    }
+    if (shapeStyleString.size() > 1)
+    {
+        std::cout << "Shape character style should be single character";
+        return false;
+    }
+    if (m_args[0] == "all")
+    {
+        for (size_t i = 0; i < shapesVector.size(); i++)
+        {
+            shapesVector[i]->setChar(shapeStyleChar);
+        }
+    }
+    else 
+    {
+        int x = std::atoi(m_args[0].c_str());
+        if (x == 0 || x > shapesVector.size())
+        {
+            std::cout << "Invalid shape number!";
+            return false;
+        }
+        else
+        {
+            shapesVector[x-1]->setChar(shapeStyleChar);
         }
     }
     return true;
@@ -165,13 +207,17 @@ Command* createCommand(CommandReceiver& receiver, const std::string& cmdName, co
     {
         return new DrawCmd(receiver, args);
     }
+    else if (cmdName == "set-style")
+    {
+        return new SetStyleCmd(receiver, args);
+    }
     else if (cmdName == "exit")
     {
         return new ExitCmd(receiver, args);
     }
     else
     {
-        std::cout << "Invalid command\n";
+        std::cout << "\nInvalid command\n";
         return nullptr;
     }
 }
@@ -182,10 +228,10 @@ StringArgs parseUserInput(const std::string& fullCmdStr)
     std::string token = "";
     size_t inputSize = fullCmdStr.size();
 
-    for (auto i=0u; i < inputSize; i++)
+    for (auto i = 0u; i < inputSize; i++)
     {
         char c = fullCmdStr[i];
-        if (std::isalnum(c) != 0 || c == '-')
+        if (c > 32 && c < 127)
         {
             token += c;
         }
@@ -196,7 +242,6 @@ StringArgs parseUserInput(const std::string& fullCmdStr)
         }
         if (c == 0) break;
     }
-
     return tokens;
 }
 
