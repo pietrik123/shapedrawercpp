@@ -77,6 +77,15 @@ public:
     void printDetailedHelp() const override; 
 };
 
+class HelpCmd : public Command
+{
+public:
+    HelpCmd(CommandReceiver& r, const StringArgs& args);
+    bool execute() override;
+    void printGeneralHelp() const override;
+    void printDetailedHelp() const override;
+};
+
 class ExitCmd : public Command
 {
 public:
