@@ -32,15 +32,15 @@ bool CreateTriangleCmd::execute()
 
 void CreateTriangleCmd::printGeneralHelp() const
 {
-    std::cout << "tri\n";
-    std::cout << "Creates a triangle shape, saves it in memory and draws it on the screen\n";
+    std::cout << "\ntri\n";
+    std::cout << "Creates a triangle shape, saves it in memory and draws it on the screen\n\n";
 }
 
 void CreateTriangleCmd::printDetailedHelp() const
 {
     printGeneralHelp();
     std::cout << "Syntax: tri <dim_a> <dim_h>\n";
-    std::cout << "Arguments:\ndim_a, dim_h - triangle legs lengths of type unsigned integer\n";
+    std::cout << "Arguments:\ndim_a, dim_h - triangle legs lengths of type unsigned integer\n\n";
 }
 
 CreateRectangleCmd::CreateRectangleCmd(CommandReceiver& r, const StringArgs& args) : Command (r, args)
@@ -67,15 +67,15 @@ bool CreateRectangleCmd::execute()
 
 void CreateRectangleCmd::printGeneralHelp() const
 {
-    std::cout << "rect\n";
-    std::cout << "Creates a rectangle shape, saves it in memory and draws it on the screen\n";
+    std::cout << "\nrect\n";
+    std::cout << "Creates a rectangle shape, saves it in memory and draws it on the screen\n\n";
 }
 
 void CreateRectangleCmd::printDetailedHelp() const
 {
     printGeneralHelp();
     std::cout << "Syntax: rect <dim_a> <dim_b>\n";
-    std::cout << "Arguments:\ndim_a, dim_b - lengths of rectangle sides of type unsigned integer\n";
+    std::cout << "Arguments:\ndim_a, dim_b - lengths of rectangle sides of type unsigned integer\n\n";
 }
 
 CreateSquareCmd::CreateSquareCmd(CommandReceiver& r, const StringArgs& args) : Command (r, args)
@@ -101,15 +101,15 @@ bool CreateSquareCmd::execute()
 
 void CreateSquareCmd::printGeneralHelp() const
 {
-    std::cout << "square\n";
-    std::cout << "Creates a square shape, saves it in memory and draws it on the screen\n";
+    std::cout << "\nsquare\n";
+    std::cout << "Creates a square shape, saves it in memory and draws it on the screen\n\n";
 }
 
 void CreateSquareCmd::printDetailedHelp() const
 {
     printGeneralHelp();
     std::cout << "Syntax: square <dim_a>\n";
-    std::cout << "Arguments:\ndim_a - length of square side of type unsigned integer\n";
+    std::cout << "Arguments:\ndim_a - length of square side of type unsigned integer\n\n";
 }
 
 CreateListShapesCmd::CreateListShapesCmd(CommandReceiver& r, const StringArgs& args) : Command(r, args)
@@ -132,13 +132,13 @@ bool CreateListShapesCmd::execute()
 
 void CreateListShapesCmd::printGeneralHelp() const
 {
-    std::cout << "list-shapes\n";
-    std::cout << "Prints out shapes which are stored in memory\n";
+    std::cout << "\nlist-shapes\n";
+    std::cout << "Prints out shapes which are stored in memory\n\n";
 }
 void CreateListShapesCmd::printDetailedHelp() const
 {
     printGeneralHelp();
-    std::cout << "Syntax: list-shapes\n";
+    std::cout << "Syntax: list-shapes\n\n";
 }
 
 DrawCmd::DrawCmd(CommandReceiver& r, const StringArgs& args) : Command(r, args)
@@ -184,8 +184,8 @@ bool DrawCmd::execute()
 
 void DrawCmd::printGeneralHelp() const
 {
-    std::cout << "draw\n";
-    std::cout << "Draw shape (or shapes) on the console screen\n";
+    std::cout << "\ndraw\n";
+    std::cout << "Draw shape (or shapes) on the console screen\n\n";
 }
 
 void DrawCmd::printDetailedHelp() const
@@ -196,7 +196,7 @@ void DrawCmd::printDetailedHelp() const
             << "draw <shape_id>\n";
     std::cout << "Arguments:\n"
             << "all - tells the program that is should draw all shapes which are stored in memory\n"
-            << "shape_id - id of the shape which may be taken by \"list-shapes\" command\n";
+            << "shape_id - id of the shape which may be taken by \"list-shapes\" command\n\n";
 }
 
 SetStyleCmd::SetStyleCmd(CommandReceiver&r, const StringArgs& args) : Command(r, args)
@@ -244,8 +244,8 @@ bool SetStyleCmd::execute()
 
 void SetStyleCmd::printGeneralHelp() const
 {
-    std::cout << "set-style\n";
-    std::cout << "Sets ascii character with witch a shape is drawn\n";
+    std::cout << "\nset-style\n";
+    std::cout << "Sets ascii character with witch a shape is drawn\n\n";
 }
 
 void SetStyleCmd::printDetailedHelp() const
@@ -257,7 +257,95 @@ void SetStyleCmd::printDetailedHelp() const
     std::cout << "Arguments:\n"
             << "all - changes the style of all shapes stored in program memory\n"
             << "shape_id - identifier of a shape of which style is set up, the id can be taken by \"list-shapes\" command\n"
-            << "character - ascii character with which the shape will be drawn\n";
+            << "character - ascii character with which the shape will be drawn\n\n";
+}
+
+HelpCmd::HelpCmd(CommandReceiver& r, const StringArgs& args) : Command(r, args)
+{
+}
+
+bool HelpCmd::execute()
+{
+    CreateTriangleCmd* triangleCmdObj = new CreateTriangleCmd(m_receiver, m_args);
+    CreateRectangleCmd* rectangleCmdObj = new CreateRectangleCmd(m_receiver, m_args);
+    CreateSquareCmd* squareCmdObj = new CreateSquareCmd(m_receiver, m_args);
+    CreateListShapesCmd* listShapesCmdObj = new CreateListShapesCmd(m_receiver, m_args);
+    DrawCmd* drawCmdObj = new DrawCmd(m_receiver, m_args);
+    SetStyleCmd* setStyleCmdObj = new SetStyleCmd(m_receiver, m_args);
+    ExitCmd* exitCmdObj = new ExitCmd(m_receiver, m_args);
+
+    if (m_args.size() == 0)
+    {
+        printGeneralHelp();
+        triangleCmdObj->printGeneralHelp();
+        rectangleCmdObj->printGeneralHelp();
+        squareCmdObj->printGeneralHelp();
+        listShapesCmdObj->printGeneralHelp();
+        drawCmdObj->printGeneralHelp();
+        setStyleCmdObj->printGeneralHelp();
+        exitCmdObj->printGeneralHelp();
+    }
+    else if (m_args.size() == 1)
+    {
+        if (m_args[0] == "help")
+        {
+            printDetailedHelp();
+        }
+        if (m_args[0] == "tri")
+        {
+            triangleCmdObj->printDetailedHelp();
+        }
+        else if (m_args[0] == "rect")
+        {
+            rectangleCmdObj->printDetailedHelp();
+        }
+        else if (m_args[0] == "square")
+        {
+            squareCmdObj->printDetailedHelp();
+        }
+        else if (m_args[0] == "list-shapes")
+        {
+            listShapesCmdObj->printDetailedHelp();
+        }
+        else if (m_args[0] == "draw")
+        {
+            drawCmdObj->printDetailedHelp();
+        }
+        else if (m_args[0] == "set-style")
+        {
+            setStyleCmdObj->printDetailedHelp();
+        }
+        else if (m_args[0] == "exit")
+        {
+            exitCmdObj->printDetailedHelp();
+        }
+        else
+        {
+            return false;
+        }
+    }
+    else
+    {
+        return false;
+    }
+    return true;
+}
+
+void HelpCmd::printGeneralHelp() const 
+{
+    std::cout << "\nhelp\n";
+    std::cout << "Displays all available commands with short description\n\n";
+}
+
+void HelpCmd::printDetailedHelp() const
+{
+    printGeneralHelp();
+    std::cout << "Syntax:\n"
+            << "help\n"
+            << "help <command>\n";
+    std::cout << "Arguments:\n"
+            << "command - displays a full description of the <command>"
+            << "(command desription + parameters description\n\n";
 }
 
 ExitCmd::ExitCmd(CommandReceiver& r, const StringArgs& args) : Command(r, args)
@@ -272,8 +360,8 @@ bool ExitCmd::execute()
 
 void ExitCmd::printGeneralHelp() const
 {
-    std::cout << "exit\n";
-    std::cout << "Shall terminate the shapedrawer process\n";
+    std::cout << "\nexit\n";
+    std::cout << "Shall terminate the shapedrawer process\n\n";
 }
 
 void ExitCmd::printDetailedHelp() const
@@ -306,6 +394,10 @@ Command* createCommand(CommandReceiver& receiver, const std::string& cmdName, co
     else if (cmdName == "set-style")
     {
         return new SetStyleCmd(receiver, args);
+    }
+    else if (cmdName == "help")
+    {
+        return new HelpCmd(receiver, args);
     }
     else if (cmdName == "exit")
     {
