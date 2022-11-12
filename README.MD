@@ -30,4 +30,12 @@ make unittest
 make all
 ```
 
+## Debug with vscode
 
+Make sure you have C++ tools plugin installed in vscode.
+
+Please start vscode in the repo directory.
+
+Build the project.
+
+Start debugging.
