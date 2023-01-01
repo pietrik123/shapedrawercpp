@@ -3,6 +3,8 @@
 #include <iostream>
 #include <cmath>
 
+using namespace ShapedrawerShapes;
+
 Shape::Shape() : m_ch{ '*' }
 {
 }

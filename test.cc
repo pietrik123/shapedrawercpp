@@ -4,6 +4,8 @@
 #include <vector>
 #include <iostream>
 
+using namespace ShapedrawerShapes;
+
 void drawShapeWithInfo(const Shape* shape)
 {
     shape->printInfo();

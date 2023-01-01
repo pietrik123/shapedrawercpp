@@ -6,6 +6,7 @@
 #include <vector>
 #include <string>
 
+using namespace ShapedrawerShapes;
 using Shapes = std::vector<Shape*>;
 using StringArgs = std::vector<std::string>;
 

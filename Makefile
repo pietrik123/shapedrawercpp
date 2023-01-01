@@ -9,13 +9,13 @@ unittest: shapes.o command.o ut/unittest.o
 	$(CXX) -o unittest $^
 
 examples: test.o examples.o shapes.o examples.o
-	$(CXX) -o examples $^
+	$(CXX) -std=c++14 -o examples $^
 
 %.o: %.cc $(INCL_DEPS)
-	$(CXX) -c -o $@ $<
+	$(CXX) -c -std=c++14 -o $@ $<
 
 ut/%.o: ut/%.cc $(INCL_DEPS)
-	$(CXX) -c -o $@ $< -ICatch2/single_include/catch2/ -I./
+	$(CXX) -c -std=c++14 -o $@ $< -ICatch2/single_include/catch2 -I.
 
 .PHONY: clean
 clean:

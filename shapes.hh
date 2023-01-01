@@ -3,6 +3,8 @@
 
 #include <string>
 
+namespace ShapedrawerShapes
+{
 
 class Shape
 {
@@ -60,5 +62,7 @@ class Square : public Shape
     private:
         int m_a;
 };
+
+}
 
 #endif

@@ -22,7 +22,7 @@ bool CreateTriangleCmd::execute()
     int h = std::atoi(m_args[1].c_str());
     if (a == 0 || h == 0)
     {
-        return false;
+        return false;k
     }
     Triangle* tri = new Triangle(a,h);
     m_receiver.addShape(tri);
