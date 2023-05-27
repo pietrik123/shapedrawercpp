@@ -7,7 +7,7 @@ Developed for educational purposes only to learn how to work:
 * in a small team
 * with project management tools like Jira or Confluence
 * with simple CI/CD (GitHub Actions)
-* with C++ code with some unit tests
+* with C++ code with Makefile and unit tests
 
 ## Submodule Catch2 initialization
 
