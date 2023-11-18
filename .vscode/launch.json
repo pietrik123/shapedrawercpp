@@ -8,7 +8,7 @@
             "name": "(gdb) Launch",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/shapedrawer",
+            "program": "${workspaceFolder}/build/shapedrawer",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
