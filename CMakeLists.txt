@@ -20,10 +20,10 @@ include(Catch)
 enable_testing()
 
 add_executable(
-  shapedrawer
-  main.cc
-  command.cc
-  shapes.cc
+    shapedrawer
+    main.cc
+    command.cc
+    shapes.cc
 )
 
 add_executable(
@@ -36,11 +36,13 @@ add_executable(
 target_include_directories(
     shapedrawer
     PUBLIC
+    .
 )
 
 target_include_directories(
     examples
     PUBLIC
+    .
 )
 
 add_executable(
@@ -49,13 +51,17 @@ add_executable(
     command.cc
     ut/unittest.cc
 )
+
 target_include_directories(
     unittest
     PUBLIC
     .
 )
+
 target_link_libraries(
-    unittest PRIVATE Catch2::Catch2WithMain
+    unittest
+    PRIVATE
+    Catch2::Catch2WithMain
 )
 
 catch_discover_tests(unittest)
