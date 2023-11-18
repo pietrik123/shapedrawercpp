@@ -6,38 +6,21 @@ Simple command line interpreter application for drawing shapes out of ASCII char
 Developed for educational purposes only to learn how to work:
 * in a small team
 * with project management tools like Jira or Confluence
+* with C++ code
+* witch Catch2 based unit tests
+* with cmake build system
 * with simple CI/CD (GitHub Actions)
-* with C++ code with Makefile and unit tests
 
-## Submodule Catch2 initialization
-
+## Build all targets (Linux)
+From the main directory:
 ```
-git submodule update --init --recursive --force
-```
-
-## Build application
-
-```
-make shapedrawer
+mkdir build
+cd build
+cmake ..
+make
 ```
 
-## Build examples
-
-```
-make examples
-```
-
-## Build unittests
-
-```
-make unittest
-```
-
-## Build all
-
-```
-make all
-```
+## Build targets on Windows in Visual Studio
 
 ## Debug with vscode
 
